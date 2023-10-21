@@ -19,6 +19,7 @@ ouvrir(){
     fi
     $1 i express cors bcrypt jsonwebtoken 
     $1 i -D nodemon dotenv
+    code .
 }
 cree(){ 
     mkdir $name
