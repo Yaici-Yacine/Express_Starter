@@ -9,13 +9,13 @@ ouvrir(){
     mkdir Router Models Controllers
     echo "PORT=3000">.env
     if [[ $script == "-t" ]]; then
-        sed -i '7s/.*/\t"start":"nodemon app.ts"/' package.json
-        $1 i @types/express @types/node typescript 
+        sed -i '7s/.*/\t"start":"nodemon -r dotenv\/config --exec ts-node app.ts"/' package.json
+        $1 i -D @types/express @types/node @types/cors typescript ts-node
         npx tsc --init
         echo "">app.ts
     else
         echo "">app.js
-        sed -i '7s/.*/\t"start":"nodemon app.js"/' package.json
+        sed -i '7s/.*/\t"start":"nodemon -r dotenv\/config app.js"/' package.json
     fi
     $1 i express cors bcrypt jsonwebtoken 
     $1 i -D nodemon dotenv
